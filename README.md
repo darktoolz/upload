@@ -1,0 +1,20 @@
+# simplest file upload server
+```bash
+docker pull darktool/upload
+```
+
+## docker-compose.yml
+```yml
+services:
+  nginx:
+    image: darktool/upload
+    read_only: true
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - /var/www
+    tmpfs:
+      - /tmp:size=128M,uid=65534,gid=65533,mode=1777
+      - /run:size=128M,uid=65534,gid=65533,mode=1777
+```
